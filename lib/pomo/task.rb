@@ -2,13 +2,6 @@
 module Pomo
   class Task
     
-    #--
-    # Mixins
-    #++
-    
-    include Growl
-    
-    ##
     # Task name.
     
     attr_accessor :name
@@ -75,6 +68,13 @@ module Pomo
       @complete = true
       notify_warning complete_message
     end
-    
+
+    def notify_info message
+      notify_warning message
+    end
+
+    def notify_warning message
+     `osascript -e 'tell application "Quicksilver" to show large type "#{message.gsub('"', '\"')}"'`
+    end
   end
 end
