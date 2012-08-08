@@ -49,6 +49,7 @@ module Pomo
     # Start timing the task.
     
     def start
+      notify_warning "started #{self}"
       complete_message = "time is up! hope you are finished #{self}"
       format_message = "(:progress_bar) :remaining minutes remaining"
       progress(
